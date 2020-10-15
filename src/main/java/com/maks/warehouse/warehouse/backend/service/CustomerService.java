@@ -1,44 +1,45 @@
 package com.maks.warehouse.warehouse.backend.service;
 
 import com.maks.warehouse.warehouse.backend.entities.Customer;
-import com.maks.warehouse.warehouse.backend.repositories.CustomerRepository;
-import com.maks.warehouse.warehouse.backend.repositories.UserRepository;
+import com.maks.warehouse.warehouse.backend.repositories.CustomerRepositoryImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CustomerService {
-    private final CustomerRepository customerRepository;
+    private final CustomerRepositoryImpl customerRepositoryImpl;
 
     @Autowired
-    public CustomerService(CustomerRepository customerRepository) {
-        this.customerRepository = customerRepository;
+    public CustomerService(CustomerRepositoryImpl customerRepositoryImpl) {
+        this.customerRepositoryImpl = customerRepositoryImpl;
     }
 
     public List<Customer> findAll() {
-        return customerRepository.findAll();
+        return customerRepositoryImpl.findAll();
     }
 
-    public Customer findByName(String name) {
-        return customerRepository.findByName(name);
+    public Optional<Customer> findByFirstName(String firstName) {
+        return customerRepositoryImpl.findAll().stream()
+                .filter(customer -> customer.getFirstName().equals(firstName)).findFirst();
     }
 
     public Customer findByLastName(String lastName) {
-        return customerRepository.findByLastName(lastName);
+        return customerRepositoryImpl.findByLastName(lastName);
     }
 
     public Customer findByMiddleName(String middleName) {
-        return customerRepository.findByLastName(middleName);
+        return customerRepositoryImpl.findByLastName(middleName);
     }
 
     public Customer findBySocialNumber(String socialNumber) {
-        return customerRepository.findBySocialSecurityNumber(socialNumber);
+        return customerRepositoryImpl.findBySocialSecurityNumber(socialNumber);
     }
 
     public Customer addCustomer(Customer customer) {
-        return customerRepository.save(customer);
+        return customerRepositoryImpl.save(customer);
     }
 
 

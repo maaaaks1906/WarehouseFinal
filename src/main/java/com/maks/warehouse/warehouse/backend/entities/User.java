@@ -14,8 +14,12 @@ import javax.persistence.Entity;
 @Setter
 @Entity
 @Table(name = "users")
-public class User {
+public class User extends AbstractEntity {
     private String username;
     private String password;
     private String email;
+
+    public String getUsername() {
+        return username;
+    }
 }

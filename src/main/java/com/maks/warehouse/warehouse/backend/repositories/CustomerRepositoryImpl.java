@@ -7,11 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface CustomerRepository extends JpaRepository<Customer, Long> {
-
-    List<Customer> findAll();
-
-    Customer findByName(String name);
+public interface CustomerRepositoryImpl extends JpaRepository<Customer, Long> {
 
     Customer findByLastName(String lastName);
 
@@ -19,5 +15,4 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
 
     Customer findBySocialSecurityNumber(String socialSecurityNumber);
 
-    Customer addCustomer(Customer customer);
 }

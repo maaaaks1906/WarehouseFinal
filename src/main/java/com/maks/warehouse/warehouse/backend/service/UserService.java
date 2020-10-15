@@ -1,30 +1,32 @@
 package com.maks.warehouse.warehouse.backend.service;
 
 import com.maks.warehouse.warehouse.backend.entities.User;
-import com.maks.warehouse.warehouse.backend.repositories.UserRepository;
+import com.maks.warehouse.warehouse.backend.repositories.UserRepositoryImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
-    private final UserRepository userRepository;
+    private final UserRepositoryImpl userRepositoryImpl;
 
     @Autowired
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public UserService(UserRepositoryImpl userRepositoryImpl) {
+        this.userRepositoryImpl = userRepositoryImpl;
     }
 
     public List<User> findAll() {
-        return userRepository.findAll();
+        return userRepositoryImpl.findAll();
     }
 
-    public User findByName(String name) {
-        return userRepository.findByName(name);
+    public Optional<User> findByUsername(String username) {
+        return userRepositoryImpl.findAll().stream()
+                .filter(user -> user.getUsername().equals(username)).findFirst();
     }
 
-    public User addCustomer(User user) {
-        return userRepository.save(user);
+    public User addUser(User user) {
+        return userRepositoryImpl.save(user);
     }
 }
