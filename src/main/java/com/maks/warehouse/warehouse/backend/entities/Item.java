@@ -12,7 +12,6 @@ import javax.persistence.Table;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name = "items")
@@ -34,7 +33,7 @@ public class Item extends AbstractEntity {
         this.unitOfMeasure = unitOfMeasure;
     }
 
-    public static <T> int getNumberOfModifications(Item item) {
-        return 0;
+    public Integer getNumberOfModifications() {
+        return numberOfModifications;
     }
 }

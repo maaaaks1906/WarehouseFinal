@@ -60,10 +60,10 @@ public class MainView extends VerticalLayout {
         if (value.isEmpty()) {
             loadItems();
         } else {
-//            List<Item> items = itemService.findAllByNameIgnoreCaseContaining(value)
-//                    .stream().sorted(Comparator.comparingInt(Item::getNumberOfModifications))// TODO: 22/09/2020 Nie wiem czy dobrze stworzylem ta metode
-//                    .collect(Collectors.toList());
-//            searchResults.setItems(items);
+            List<Item> items = itemService.findAllByNameIgnoreCaseContaining(value)
+                    .stream().sorted(Comparator.comparingInt(Item::getNumberOfModifications))// TODO: 22/09/2020 Nie wiem czy dobrze stworzylem ta metode
+                    .collect(Collectors.toList());
+            searchResults.setItems(items);
         }
     }
 
