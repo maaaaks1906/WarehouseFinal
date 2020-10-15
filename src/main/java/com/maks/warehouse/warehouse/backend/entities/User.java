@@ -22,4 +22,8 @@ public class User extends AbstractEntity {
     public String getUsername() {
         return username;
     }
+
+    public String getPassword() {
+        return password;
+    }
 }

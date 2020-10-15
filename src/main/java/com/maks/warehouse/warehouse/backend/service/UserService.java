@@ -10,11 +10,15 @@ import java.util.Optional;
 
 @Service
 public class UserService {
-    private final UserRepositoryImpl userRepositoryImpl;
+
+    private UserRepositoryImpl userRepositoryImpl;
 
     @Autowired
     public UserService(UserRepositoryImpl userRepositoryImpl) {
         this.userRepositoryImpl = userRepositoryImpl;
+    }
+
+    public UserService() {
     }
 
     public List<User> findAll() {
@@ -24,6 +28,12 @@ public class UserService {
     public Optional<User> findByUsername(String username) {
         return userRepositoryImpl.findAll().stream()
                 .filter(user -> user.getUsername().equals(username)).findFirst();
+    }
+
+    public Optional<User> findByPassword(String password) {
+        return userRepositoryImpl.findAll().stream()
+                .filter(user -> user.getPassword().equals(password))
+                .findFirst();
     }
 
     public User addUser(User user) {
