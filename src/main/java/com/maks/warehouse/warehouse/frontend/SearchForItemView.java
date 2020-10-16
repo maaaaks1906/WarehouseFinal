@@ -39,7 +39,7 @@ public class SearchForItemView extends VerticalLayout {
     public SearchForItemView() {
     }
 
-    private void createLayout() {
+    public void createLayout() {
         setSizeFull();
         setDefaultHorizontalComponentAlignment(Alignment.CENTER);
 
