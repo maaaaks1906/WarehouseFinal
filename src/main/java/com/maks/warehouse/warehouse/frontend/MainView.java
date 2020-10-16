@@ -1,7 +1,5 @@
 package com.maks.warehouse.warehouse.frontend;
 
-import com.maks.warehouse.warehouse.backend.repositories.UserRepositoryImpl;
-import com.maks.warehouse.warehouse.backend.service.UserService;
 import com.vaadin.flow.component.ClickEvent;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.icon.Icon;
@@ -9,14 +7,9 @@ import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.PasswordField;
-import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.Route;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.servlet.View;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.util.Map;
 
 /*
 Chcialbym zeby ten layout wygladal tak:
@@ -71,6 +64,7 @@ public class MainView extends VerticalLayout {
                 zeroLayout,
                 buttonLayout
         );
+
     }
 
     private void onLoginButtonClick(ClickEvent<Button> buttonClickEvent) {

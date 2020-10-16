@@ -25,11 +25,6 @@ public class UserService {
         return userRepositoryImpl.findAll();
     }
 
-    public Optional<User> findByUsername(String username) {
-        return userRepositoryImpl.findAll().stream()
-                .filter(user -> user.getUsername().equals(username)).findFirst();
-    }
-
     public Optional<User> findByPassword(String password) {
         return userRepositoryImpl.findAll().stream()
                 .filter(user -> user.getPassword().equals(password))
