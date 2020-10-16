@@ -20,7 +20,7 @@ a logowanie zeby odbywalo sie poprzez krotki kod.
  */
 
 @Route("")
-public class MainView extends VerticalLayout {
+public class LoginView extends VerticalLayout {
 
     private PasswordField password = new PasswordField("", "password");
 
@@ -39,7 +39,7 @@ public class MainView extends VerticalLayout {
     private Button resetButton = new Button("Reset", new Icon(VaadinIcon.REFRESH),this::onResetButtonClick);
 
     @Autowired
-    public MainView() {
+    public LoginView() {
         createLayout();
     }
 
@@ -68,7 +68,9 @@ public class MainView extends VerticalLayout {
     }
 
     private void onLoginButtonClick(ClickEvent<Button> buttonClickEvent) {
-
+        SearchForItemView searchForItemView = new SearchForItemView();
+        removeAll();
+        add(searchForItemView);
     }
 
     private void onResetButtonClick(ClickEvent<Button> buttonClickEvent) {
