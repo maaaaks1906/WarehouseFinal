@@ -1,7 +1,7 @@
 package com.maks.warehouse.warehouse.backend.service;
 
 import com.maks.warehouse.warehouse.backend.entities.Customer;
-import com.maks.warehouse.warehouse.backend.repositories.CustomerRepositoryImpl;
+import com.maks.warehouse.warehouse.backend.repositories.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,36 +10,39 @@ import java.util.Optional;
 
 @Service
 public class CustomerService {
-    private final CustomerRepositoryImpl customerRepositoryImpl;
+    private final CustomerRepository customerRepository;
 
     @Autowired
-    public CustomerService(CustomerRepositoryImpl customerRepositoryImpl) {
-        this.customerRepositoryImpl = customerRepositoryImpl;
+    public CustomerService(CustomerRepository customerRepository) {
+        this.customerRepository = customerRepository;
     }
 
     public List<Customer> findAll() {
-        return customerRepositoryImpl.findAll();
+        return customerRepository.findAll();
     }
 
     public Optional<Customer> findByFirstName(String firstName) {
-        return customerRepositoryImpl.findAll().stream()
+        return customerRepository.findAll().stream()
                 .filter(customer -> customer.getFirstName().equals(firstName)).findFirst();
     }
 
     public Customer findByLastName(String lastName) {
-        return customerRepositoryImpl.findByLastName(lastName);
+        return customerRepository.findByLastName(lastName)
+                .orElseThrow();
     }
 
     public Customer findByMiddleName(String middleName) {
-        return customerRepositoryImpl.findByLastName(middleName);
+        return customerRepository.findByLastName(middleName)
+                .orElseThrow();
     }
 
     public Customer findBySocialNumber(String socialNumber) {
-        return customerRepositoryImpl.findBySocialSecurityNumber(socialNumber);
+        return customerRepository.findBySocialSecurityNumber(socialNumber)
+                .orElseThrow();
     }
 
     public Customer addCustomer(Customer customer) {
-        return customerRepositoryImpl.save(customer);
+        return customerRepository.save(customer);
     }
 
 
