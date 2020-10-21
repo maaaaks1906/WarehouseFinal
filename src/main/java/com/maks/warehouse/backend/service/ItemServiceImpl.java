@@ -1,9 +1,9 @@
 package com.maks.warehouse.backend.service;
 
-import com.maks.warehouse.backend.ItemMapper;
+import com.maks.warehouse.backend.mapper.ItemMapper;
 import com.maks.warehouse.backend.model.Item;
 import com.maks.warehouse.backend.repositories.ItemRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@AllArgsConstructor
 public class ItemServiceImpl implements ItemService {
 
     private final Sort SORT_BY_NUMBER_OF_MODIFICATIONS
@@ -18,12 +19,6 @@ public class ItemServiceImpl implements ItemService {
 
     private final ItemRepository itemRepository;
     private final ItemMapper itemMapper;
-
-    @Autowired
-    public ItemServiceImpl(ItemRepository itemRepository, ItemMapper itemMapper) {
-        this.itemRepository = itemRepository;
-        this.itemMapper = itemMapper;
-    }
 
     @Override
     public List<Item> findAllOrderByNumberOfModifications() {
