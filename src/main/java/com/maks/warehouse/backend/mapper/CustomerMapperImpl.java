@@ -1,8 +1,10 @@
-package com.maks.warehouse.backend;
+package com.maks.warehouse.backend.mapper;
 
 import com.maks.warehouse.backend.entities.CustomerEntity;
 import com.maks.warehouse.backend.model.Customer;
+import org.springframework.stereotype.Component;
 
+@Component
 public class CustomerMapperImpl implements CustomerMapper {
 
     @Override

@@ -1,4 +1,4 @@
-package com.maks.warehouse.backend;
+package com.maks.warehouse.backend.mapper;
 
 import com.maks.warehouse.backend.entities.ItemEntity;
 import com.maks.warehouse.backend.entities.UnitOfMeasure;

@@ -1,8 +1,7 @@
-package com.maks.warehouse.backend;
+package com.maks.warehouse.backend.mapper;
 
 import com.maks.warehouse.backend.entities.ItemEntity;
 import com.maks.warehouse.backend.model.Item;
-import com.maks.warehouse.backend.service.Mapper;
 
 public interface ItemMapper extends Mapper<Item, ItemEntity> {
 

@@ -1,6 +1,8 @@
 package com.maks.warehouse.frontend;
 
+import com.maks.warehouse.backend.mapper.ItemMapper;
 import com.maks.warehouse.backend.model.Item;
+import com.maks.warehouse.backend.repositories.ItemRepository;
 import com.maks.warehouse.backend.service.ItemService;
 import com.vaadin.flow.component.AbstractField;
 import com.vaadin.flow.component.ClickEvent;
@@ -23,17 +25,19 @@ public class SearchForItemView extends VerticalLayout {
     private Button addItem = new Button("New Item", this::onAddItemButtonClick);
 
     private Grid<Item> searchResults = new Grid<>(Item.class);
+
+    private ItemRepository itemRepository;
+    private ItemMapper itemMapper;
     private ItemService itemService;
 
     @Autowired
-    public SearchForItemView(ItemService itemService) {
-        this.itemService = itemService;
-
-        createLayout();
-        loadItems();
+    public SearchForItemView(ItemRepository itemRepository) {
+        this.itemRepository = itemRepository;
     }
 
-    public SearchForItemView() {
+    public SearchForItemView(ItemMapper itemMapper, ItemService itemService) {
+        this.itemMapper = itemMapper;
+        this.itemService = itemService;
     }
 
     public void createLayout() {
