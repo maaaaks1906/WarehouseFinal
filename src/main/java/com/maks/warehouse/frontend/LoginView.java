@@ -12,14 +12,6 @@ import com.vaadin.flow.router.Route;
 import org.springframework.beans.factory.annotation.Autowired;
 
 
-/*
-Chcialbym zeby ten layout wygladal tak:
-jakies fajne zdjecie w tle
-i moze na poczatek tylko login i haslo, ale docelowo
-chcialbym zeby byl tylko textfield i duze przyciski,
-a logowanie zeby odbywalo sie poprzez krotki kod.
- */
-
 @Route("")
 public class LoginView extends VerticalLayout {
 

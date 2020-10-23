@@ -26,20 +26,16 @@ public class SearchForItemView extends VerticalLayout {
 
     private Grid<Item> searchResults = new Grid<>(Item.class);
 
-    private ItemRepository itemRepository;
     private ItemMapper itemMapper;
     private ItemService itemService;
 
     @Autowired
-    public SearchForItemView(ItemRepository itemRepository) {
-        this.itemRepository = itemRepository;
-    }
-
-    public SearchForItemView(ItemMapper itemMapper, ItemService itemService) {
-        this.itemMapper = itemMapper;
+    public SearchForItemView(ItemService itemService) {
         this.itemService = itemService;
+        createLayout();
     }
 
+    // TODO: 23/10/2020 Itemy na liscie nie laduja sie odrazu
     public void createLayout() {
         setSizeFull();
         setDefaultHorizontalComponentAlignment(Alignment.CENTER);
