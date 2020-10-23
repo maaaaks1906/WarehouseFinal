@@ -17,7 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-@Route("search")
+@Route("search_items")
 public class SearchForItemView extends VerticalLayout {
 
     private TextField itemSearch = new TextField("", this::onItemSearchChange);

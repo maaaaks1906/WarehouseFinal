@@ -1,5 +1,6 @@
 package com.maks.warehouse.frontend;
 
+import com.maks.warehouse.backend.service.CustomerService;
 import com.vaadin.flow.component.ClickEvent;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
@@ -12,7 +13,7 @@ import com.vaadin.flow.router.Route;
 import org.springframework.beans.factory.annotation.Autowired;
 
 
-@Route("")
+@Route("login")
 public class LoginView extends VerticalLayout {
 
     private PasswordField password = new PasswordField("", "password");
@@ -40,7 +41,6 @@ public class LoginView extends VerticalLayout {
         setSizeFull();
 
         HorizontalLayout passwordLayout = new HorizontalLayout(password);
-
         HorizontalLayout oneTwoThreeLayout = new HorizontalLayout(oneButton, twoButton, threeButton);
         HorizontalLayout fourFiveSixLayout = new HorizontalLayout(fourButton, fiveButton, sixButton);
         HorizontalLayout sevenEightNineLayout = new HorizontalLayout(sevenButton, eightButton, nineButton);

@@ -24,8 +24,4 @@ public class CustomerEntity extends AbstractEntity {
     private String emailAddress;
     private String socialSecurityNumber;
 
-
-    public String getFirstName() {
-        return firstName;
-    }
 }

@@ -1,14 +1,14 @@
 package com.maks.warehouse.backend.service;
 
-import com.maks.warehouse.backend.entities.CustomerEntity;
+import com.maks.warehouse.backend.model.Customer;
 
 import java.util.List;
 
 public interface CustomerService {
-    List<CustomerEntity> findAll();
-    CustomerEntity findByFirstName(String firstName);
-    CustomerEntity findByLastName(String lastName);
-    CustomerEntity findByMiddleName(String middleName);
-    CustomerEntity findBySocialNumber(String socialNumber);
-    CustomerEntity addCustomer(CustomerEntity customerEntity);
+    List<Customer> findAll();
+    Customer findByFirstName(String firstName);
+    Customer findByLastName(String lastName);
+    Customer findByMiddleName(String middleName);
+    Customer findBySocialNumber(String socialNumber);
+    Customer addCustomer(Customer customer);
 }
