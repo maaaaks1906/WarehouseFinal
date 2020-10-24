@@ -4,6 +4,7 @@ import com.maks.warehouse.backend.mapper.UserMapper;
 import com.maks.warehouse.backend.model.User;
 import com.maks.warehouse.backend.repositories.UserRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.stream.Collectors;
 @Service
 @AllArgsConstructor
 public class UserServiceImpl implements UserService {
+//    private final Sort SORT = Sort.by(Sort.Direction.ASC);
 
     private UserRepository userRepository;
     private UserMapper userMapper;

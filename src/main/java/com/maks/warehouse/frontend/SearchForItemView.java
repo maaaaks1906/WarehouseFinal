@@ -1,8 +1,6 @@
 package com.maks.warehouse.frontend;
 
-import com.maks.warehouse.backend.mapper.ItemMapper;
 import com.maks.warehouse.backend.model.Item;
-import com.maks.warehouse.backend.repositories.ItemRepository;
 import com.maks.warehouse.backend.service.ItemService;
 import com.vaadin.flow.component.AbstractField;
 import com.vaadin.flow.component.ClickEvent;
@@ -20,18 +18,17 @@ import java.util.List;
 @Route("search_items")
 public class SearchForItemView extends VerticalLayout {
 
-    private TextField itemSearch = new TextField("", this::onItemSearchChange);
+    private final TextField ITEM_SEARCH_TEXTFIELD = new TextField("", this::onItemSearchChange);
 
-    private Button addItem = new Button("New Item", this::onAddItemButtonClick);
+    private final Button ADD_ITEM_BUTTON = new Button("New Item", this::onAddItemButtonClick);
 
-    private Grid<Item> searchResults = new Grid<>(Item.class);
+    private final Grid<Item> SEARCH_RESULTS = new Grid<>(Item.class);
 
-    private ItemMapper itemMapper;
-    private ItemService itemService;
+    private final ItemService ITEM_SERVICE;
 
     @Autowired
-    public SearchForItemView(ItemService itemService) {
-        this.itemService = itemService;
+    public SearchForItemView(ItemService ITEM_SERVICE) {
+        this.ITEM_SERVICE = ITEM_SERVICE;
         createLayout();
     }
 
@@ -40,19 +37,19 @@ public class SearchForItemView extends VerticalLayout {
         setSizeFull();
         setDefaultHorizontalComponentAlignment(Alignment.CENTER);
 
-        itemSearch.setPlaceholder("Search...");
-        itemSearch.setValueChangeMode(ValueChangeMode.EAGER);
+        ITEM_SEARCH_TEXTFIELD.setPlaceholder("Search...");
+        ITEM_SEARCH_TEXTFIELD.setValueChangeMode(ValueChangeMode.EAGER);
 
-        HorizontalLayout topLayout = new HorizontalLayout(itemSearch, addItem);
-        VerticalLayout layout = new VerticalLayout(topLayout, searchResults);
+        HorizontalLayout topLayout = new HorizontalLayout(ITEM_SEARCH_TEXTFIELD, ADD_ITEM_BUTTON);
+        VerticalLayout layout = new VerticalLayout(topLayout, SEARCH_RESULTS);
         layout.setWidth("50%");
 
         add(layout);
     }
 
     private void loadItems() {
-        List<Item> itemEntities = itemService.findAllOrderByNumberOfModifications();
-        searchResults.setItems(itemEntities);
+        List<Item> itemEntities = ITEM_SERVICE.findAllOrderByNumberOfModifications();
+        SEARCH_RESULTS.setItems(itemEntities);
     }
 
     private void onItemSearchChange(AbstractField.ComponentValueChangeEvent<TextField, String> e) {
@@ -60,12 +57,12 @@ public class SearchForItemView extends VerticalLayout {
         if (value.isEmpty()) {
             loadItems();
         } else {
-            List<Item> itemEntities = itemService.findAllByNameIgnoreCaseContainingOrderByNumberOfModifications(value);
-            searchResults.setItems(itemEntities);
+            List<Item> itemEntities = ITEM_SERVICE.findAllByNameIgnoreCaseContainingOrderByNumberOfModifications(value);
+            SEARCH_RESULTS.setItems(itemEntities);
         }
     }
 
     private void onAddItemButtonClick(ClickEvent<Button> buttonClickEvent) {
-
+        // TODO: 23/10/2020
     }
 }
