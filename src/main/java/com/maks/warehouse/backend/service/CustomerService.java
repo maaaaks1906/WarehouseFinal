@@ -11,4 +11,5 @@ public interface CustomerService {
     Customer findByMiddleName(String middleName);
     Customer findBySocialNumber(String socialNumber);
     Customer addCustomer(Customer customer);
+    List<Customer> findAllByCredentials(String credential);
 }

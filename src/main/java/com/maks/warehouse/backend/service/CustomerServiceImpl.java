@@ -24,6 +24,11 @@ public class CustomerServiceImpl implements CustomerService {
                 .collect(Collectors.toList());
     }
 
+    public List<Customer> findAllByCredentials(String credential) {
+        return null;
+        // TODO: 25/10/2020
+    }
+
     public Customer findByFirstName(String firstName) {
         return customerRepository.findByFirstName(firstName)
                 .map(customerMapper::toDomain)

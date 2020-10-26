@@ -23,5 +23,4 @@ public interface CustomerRepository extends JpaRepository<CustomerEntity, Long> 
     Optional<CustomerEntity> findBySocialSecurityNumber(String socialSecurityNumber);
 
 
-
 }
